@@ -93,7 +93,7 @@ int main()
 				cout << "顺序表建立失败\n\n";
 			break;
 		case 2:										//输入10个字符
-			cout << "请输入10个数字:\n";
+			cout << "请输入10组数字:\n";
 			for (i = 0; i < 10; i++)
 			{
 				cin >> L.elem[i];
