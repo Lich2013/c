@@ -35,20 +35,20 @@ Status Delete_Sq(TempSqList &H){				//临时顺序表的初始化
 	H.new_elem = new ElemType[MAXSIZE];		//为顺序表分配一个大小为MAXSIZE的数组空间
 	if (!H.new_elem)  exit(OVERFLOW);		//存储分配失败
 	H.new_length = 0;							//空表长度为0
-	
+
 	return 0;
 }
 
-Status Delete(SqList &L, ElemType &e)
+Status Delete(SqList &L, ElemType &e)	//删除顺序表中元素方法
 {
-	
-	int i,j = 0;
+
+	int i, j = 0;
 	TempSqList H;
-	Delete_Sq(H); 
-	
-	for (i = 0; i < L.length; i++)
+	Delete_Sq(H);
+
+	for (i = 0; i < L.length; i++)  //遍历一次，将所需要的元素复制到另一线性表中
 	{
-		
+
 		if (e == L.elem[i])
 		{
 			continue;
@@ -57,12 +57,13 @@ Status Delete(SqList &L, ElemType &e)
 		++j;
 		++H.new_length;
 	}
-	for ( i = 0; i < H.new_length; i++)
+
+	for (i = 0; i < H.new_length; i++)		//检查结果
 	{
 		cout << H.new_elem[i] << " " << endl;
 	}
-	cout << "@Author 隆宗益"  << endl;
-	
+	cout << "@Author 隆宗益" << endl;
+
 
 	return 0;
 }
@@ -70,13 +71,13 @@ Status Delete(SqList &L, ElemType &e)
 int main()
 {
 	SqList L;
-	
-	int i,e, choose;
+
+	int i, e, choose;
 
 	cout << "1. 建立顺序表\n";
 	cout << "2. 输入数据\n";
 	cout << "3. 执行算法作业(10)\n";
-	
+
 
 	choose = -1;
 	while (choose != 0)
@@ -96,20 +97,20 @@ int main()
 			for (i = 0; i < 10; i++)
 			{
 				cin >> L.elem[i];
-				
+
 				++L.length;
 			}
-		
-				cout << endl;
+
+			cout << endl;
 			break;
-		case 3:										//顺序表的查找
-			cout << "请输入所要删除的字符:";
-			cin >> e;			//输入e，代表所要查找的数值
-			
+		case 3:										//顺序表的删除
+			cout << "请输入所要删除的数字:";
+			cin >> e;			//输入e，代表所要删除的数值
+
 			Delete(L, e);
-			
+
 			break;
-		
+
 		}
 	}
 	return 0;
